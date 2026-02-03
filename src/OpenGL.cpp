@@ -166,7 +166,6 @@ void GL::VertexAttribDivisor(AttributeID index, AttributeDivisor divisor) { glVe
 
 
 
-
 void GL::DrawArrays(DrawMode mode, unsigned int first, Size count) { glDrawArrays((unsigned int)mode, first, count); }
 void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount) { glDrawArraysInstanced((unsigned int)mode, first, count, instancecount); }
 void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices) { glDrawElements((unsigned int)mode, count, (unsigned int)type, indices); }

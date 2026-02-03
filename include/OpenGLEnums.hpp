@@ -5,6 +5,8 @@
 # include <GLFW/glfw3.h>
 # include "OpenGLTypes.hpp"
 
+# include <iosfwd>
+
 namespace GL
 {
 	//	Errors
@@ -19,6 +21,8 @@ namespace GL
 		StackUnderflow = GL_STACK_UNDERFLOW,
 		StackOverflow = GL_STACK_OVERFLOW,
 	};
+	std::ostream & operator<<(std::ostream & s, Error val);
+
 	enum class ParameterName : unsigned int
 	{
 		AliasedLineWidthRange = GL_ALIASED_LINE_WIDTH_RANGE,
@@ -401,6 +405,7 @@ namespace GL
 		Int = GL_INT,
 		UnsignedInt = GL_UNSIGNED_INT,
 	};
+	std::ostream & operator<<(std::ostream & s, AttributeType val);
 	enum class AttributeIntType : unsigned int
 	{
 		Byte = GL_BYTE,
@@ -410,6 +415,7 @@ namespace GL
 		Int = GL_INT,
 		UnsignedInt = GL_UNSIGNED_INT,
 	};
+	std::ostream & operator<<(std::ostream & s, AttributeIntType val);
 
 
 

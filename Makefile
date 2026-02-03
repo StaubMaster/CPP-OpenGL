@@ -31,8 +31,6 @@ FILES_OBJ := $(FILES_OBJ:.cpp=.o)
 
 all:
 	@$(call fancyNameTargetEcho,$@)
-	@echo $(FILES_SRC)
-	@echo $(FILES_OBJ)
 	@$(MAKE) -s $(FILES_OBJ)
 	@$(MAKE) -s $(NAME)
 
