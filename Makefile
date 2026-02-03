@@ -1,8 +1,7 @@
 
-NAME := openGL.a
-
+NAME := OpenGL.a
 COMPILER_C := cc -fPIE
-COMPILER_CPP := g++ -g -std=c++11
+COMPILER_CPP := g++ -std=c++11
 FLAGS := -Wall -Wextra -Werror
 ARCHIVER := ar -rcs
 REMOVER := rm -f
@@ -32,6 +31,8 @@ FILES_OBJ := $(FILES_OBJ:.cpp=.o)
 
 all:
 	@$(call fancyNameTargetEcho,$@)
+	@echo $(FILES_SRC)
+	@echo $(FILES_OBJ)
 	@$(MAKE) -s $(FILES_OBJ)
 	@$(MAKE) -s $(NAME)
 
@@ -56,7 +57,8 @@ $(NAME) : $(FILES_OBJ)
 	@$(ARCHIVER) $(NAME) $(FILES_OBJ)
 
 test:
-	$(COMPILER_CPP) $(FLAGS) EnumBits.cpp -o EnumBits.exe
+	@$(MAKE) -s $(NAME)
+	@$(COMPILER_CPP) $(FLAGS) $(ARGS_INCLUDES) main.cpp -o test.exe $(LIBRARYS) $(ARGUMENTS)
 
 ################################################################
 
@@ -64,7 +66,9 @@ test:
 
 
 
-$(DIR_OBJ)%.o: $(DIR_SRC)%.c
+#this is just for glad.c
+#since having the directorys here makes it unrecognized
+%.o : %.c
 	@$(call fancyNameCompilingEcho,$@)
 	@mkdir -p $(dir $@)
 	@$(COMPILER_C) $(FLAGS) $(ARGS_INCLUDES) -c $^ -o $@
@@ -94,7 +98,18 @@ LIBRARYS := $(NAME)
 INCLUDES := include
 ARGUMENTS := $(OS_ARGS)
 
-ARGS_LIBRARYS = $(foreach library,$(LIBRARYS),$(library))
+ifeq ($(CheckOS), Windows)
+ARGUMENTS = -lglfw3 -lgdi32
+endif
+
+ifeq ($(CheckOS), Darwin)
+ARGUMENTS = -lglfw
+endif
+
+ifeq ($(CheckOS), Linux)
+ARGUMENTS = -lglfw
+endif
+
 ARGS_INCLUDES = $(foreach include, $(INCLUDES),-I$(include))
 
 librarys:

@@ -8,7 +8,7 @@
 namespace GL
 {
 	//	General
-	Error GetError();
+	Error	GetError();
 
 	void	GetBooleanv(ParameterName pname, bool & data);
 //	void	GetDoublev(ParameterName pname, double & data);
