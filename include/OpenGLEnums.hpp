@@ -268,6 +268,7 @@ namespace GL
 		ViewportSubpixelBits = GL_VIEWPORT_SUBPIXEL_BITS,
 		MaxElementIndex = GL_MAX_ELEMENT_INDEX,
 	};
+	std::ostream & operator<<(std::ostream & s, ParameterName val);
 	enum class Capability : unsigned int
 	{
 		Blend = GL_BLEND,
@@ -350,6 +351,7 @@ namespace GL
 		GeometryShader = GL_GEOMETRY_SHADER,
 		FragmentShader = GL_FRAGMENT_SHADER,
 	};
+	std::ostream & operator<<(std::ostream & s, ShaderType val);
 	enum class ShaderParameterName : unsigned int
 	{
 		ShaderType = GL_SHADER_TYPE,
@@ -435,6 +437,7 @@ namespace GL
 		TrianglesAdjacency = GL_TRIANGLES_ADJACENCY,
 		Patches = GL_PATCHES,
 	};
+	std::ostream & operator<<(std::ostream & s, DrawMode val);
 	enum class DrawIndexType : unsigned int
 	{
 		UnsignedByte = GL_UNSIGNED_BYTE,
@@ -462,6 +465,7 @@ namespace GL
 		TransformFeedbackBuffer = GL_TRANSFORM_FEEDBACK_BUFFER,
 		UniformBuffer = GL_UNIFORM_BUFFER,
 	};
+	std::ostream & operator<<(std::ostream & s, BufferTarget val);
 	enum class BufferDataUsage : unsigned int
 	{
 		StreamDraw = GL_STREAM_DRAW,
@@ -474,6 +478,7 @@ namespace GL
 		DynamicRead = GL_DYNAMIC_READ,
 		DynamicCopy = GL_DYNAMIC_COPY,
 	};
+	std::ostream & operator<<(std::ostream & s, BufferDataUsage val);
 
 
 
