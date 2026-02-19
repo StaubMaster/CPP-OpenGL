@@ -65,6 +65,8 @@ namespace GL
 	enum class AttributeType : unsigned int;
 	enum class AttributeIntType : unsigned int;
 	typedef unsigned int AttributeDivisor;
+	typedef unsigned int AttributeStride;
+	typedef const unsigned char * AttributeOffset;
 
 
 
