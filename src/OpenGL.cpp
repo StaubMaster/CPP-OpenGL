@@ -156,11 +156,11 @@ void GL::BindVertexArray(VertexArrayID array) { glBindVertexArray(array); }
 
 
 
-void GL::EnableVertexAttribArray(AttributeID index) { glEnableVertexAttribArray(index); }
-void GL::DisableVertexAttribArray(AttributeID index) { glDisableVertexAttribArray(index); }
-void GL::VertexAttribPointer(AttributeID index, Size size, AttributeType type, bool normalized, Size stride, VData data) { glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data); }
-void GL::VertexAttribIPointer(AttributeID index, Size size, AttributeIntType type, Size stride, VData data) { glVertexAttribIPointer(index, size, (unsigned int)type, stride, data); }
-void GL::VertexAttribDivisor(AttributeID index, AttributeDivisor divisor) { glVertexAttribDivisor(index, divisor); }
+void GL::EnableVertexAttribArray(AttributeLocation index) { glEnableVertexAttribArray(index); }
+void GL::DisableVertexAttribArray(AttributeLocation index) { glDisableVertexAttribArray(index); }
+void GL::VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data) { glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data); }
+void GL::VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data) { glVertexAttribIPointer(index, size, (unsigned int)type, stride, data); }
+void GL::VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor) { glVertexAttribDivisor(index, divisor); }
 
 
 

@@ -140,11 +140,11 @@ namespace GL
 
 
 	//	Attribute
-	void	EnableVertexAttribArray(AttributeID index);
-	void	DisableVertexAttribArray(AttributeID index);
-	void	VertexAttribPointer(AttributeID index, Size size, AttributeType type, bool normalized, Size stride, VData data);
-	void	VertexAttribIPointer(AttributeID index, Size size, AttributeIntType type, Size stride, VData data);
-	void	VertexAttribDivisor(AttributeID index, AttributeDivisor divisor);
+	void	EnableVertexAttribArray(AttributeLocation index);
+	void	DisableVertexAttribArray(AttributeLocation index);
+	void	VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data);
+	void	VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data);
+	void	VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor);
 
 
 

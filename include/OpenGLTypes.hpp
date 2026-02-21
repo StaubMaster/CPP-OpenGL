@@ -38,14 +38,14 @@ namespace GL
 
 
 	//	Shader
-	typedef unsigned int ShaderID;
+	typedef unsigned int ShaderID; // None = 0
 	enum class ShaderType : unsigned int;
 	enum class ShaderParameterName : unsigned int;
 
 
 
 	//	Shader Program
-	typedef unsigned int ShaderProgramID;
+	typedef unsigned int ShaderProgramID; // None = 0
 	enum class ShaderProgramParameterName : unsigned int;
 
 
@@ -56,12 +56,12 @@ namespace GL
 
 
 	//	VertexArray
-	typedef unsigned int VertexArrayID;
+	typedef unsigned int VertexArrayID; // None = 0
 
 
 
 	//	Attribute
-	typedef unsigned int AttributeID;
+	typedef int AttributeLocation; // None = -1
 	enum class AttributeType : unsigned int;
 	enum class AttributeIntType : unsigned int;
 	typedef unsigned int AttributeDivisor;
@@ -77,14 +77,14 @@ namespace GL
 
 
 	//	Buffer
-	typedef unsigned int BufferID;
+	typedef unsigned int BufferID; // None = 0
 	enum class BufferTarget : unsigned int;
 	enum class BufferDataUsage : unsigned int;
 
 
 
 	//	Texture
-	typedef unsigned int TextureID;
+	typedef unsigned int TextureID; // None = 0
 	enum class TextureTarget : unsigned int;
 	enum class TextureParameterName : unsigned int;
 	enum class TextureFormat : unsigned int;
