@@ -326,6 +326,7 @@ namespace GL
 		Gequal = GL_GEQUAL,		//	>=
 		Always = GL_ALWAYS,		//	1
 	};
+	std::ostream & operator<<(std::ostream & s, Comparison val);
 
 	enum class Side : unsigned int
 	{
@@ -333,11 +334,13 @@ namespace GL
 		Back = GL_BACK,
 		FrontAndBack = GL_FRONT_AND_BACK,
 	};
+	std::ostream & operator<<(std::ostream & s, Side val);
 	enum class FrontSide : unsigned int
 	{
 		Cw = GL_CW,
 		Ccw = GL_CCW,
 	};
+	std::ostream & operator<<(std::ostream & s, FrontSide val);
 
 
 
@@ -360,8 +363,7 @@ namespace GL
 		InfoLogLength = GL_INFO_LOG_LENGTH,
 		ShaderSourceLength = GL_SHADER_SOURCE_LENGTH,
 	};
-
-
+	std::ostream & operator<<(std::ostream & s, ShaderParameterName val);
 
 	//	Shader Program
 	enum class ShaderProgramParameterName : unsigned int
@@ -387,6 +389,7 @@ namespace GL
 		GeometryInputType = GL_GEOMETRY_INPUT_TYPE,
 		GeometryOutputType = GL_GEOMETRY_OUTPUT_TYPE,
 	};
+	std::ostream & operator<<(std::ostream & s, ShaderProgramParameterName val);
 
 
 
@@ -444,6 +447,7 @@ namespace GL
 		UnsignedShort = GL_UNSIGNED_SHORT,
 		UnsignedInt = GL_UNSIGNED_INT,
 	};
+	std::ostream & operator<<(std::ostream & s, DrawIndexType val);
 
 
 
@@ -497,6 +501,7 @@ namespace GL
 		Texture2DMultisample = GL_TEXTURE_2D_MULTISAMPLE,
 		Texture2DMultisampleArray = GL_TEXTURE_2D_MULTISAMPLE_ARRAY,
 	};
+	std::ostream & operator<<(std::ostream & s, TextureTarget val);
 	enum class TextureFormat : unsigned int
 	{
 		Red = GL_RED,
@@ -515,6 +520,7 @@ namespace GL
 		DepthComponent = GL_DEPTH_COMPONENT,
 		DepthStencil = GL_DEPTH_STENCIL,
 	};
+	std::ostream & operator<<(std::ostream & s, TextureFormat val);
 	enum class TextureType : unsigned int
 	{
 		UnsignedByte = GL_UNSIGNED_BYTE,
@@ -538,6 +544,7 @@ namespace GL
 		UnsignedInt1010102 = GL_UNSIGNED_INT_10_10_10_2,
 		UnsignedInt2101010Rev = GL_UNSIGNED_INT_2_10_10_10_REV,
 	};
+	std::ostream & operator<<(std::ostream & s, TextureType val);
 	enum class TextureInternalFormat : unsigned int
 	{
 		DepthComponent = GL_DEPTH_COMPONENT,
@@ -624,6 +631,7 @@ namespace GL
 		CompressedRgbBptcSignedFloat = GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT,
 		CompressedRgbBptcUnsignedFloat = GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT,
 	};
+	std::ostream & operator<<(std::ostream & s, TextureInternalFormat val);
 	enum class TextureParameterName : unsigned int
 	{
 		DepthStencilTextureMode = GL_DEPTH_STENCIL_TEXTURE_MODE,
@@ -644,6 +652,7 @@ namespace GL
 		TextureWrapT = GL_TEXTURE_WRAP_T,
 		TextureWrapR = GL_TEXTURE_WRAP_R,
 	};
+	std::ostream & operator<<(std::ostream & s, TextureParameterName val);
 };
 
 #endif

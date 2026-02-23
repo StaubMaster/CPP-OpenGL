@@ -1,6 +1,50 @@
 #include "OpenGL.hpp"
 
+//#define DEBUG_OPENGL_SHOW_FUNCTION_INVOKE_PARAMETERS
 
+#ifdef DEBUG_OPENGL_SHOW_FUNCTION_INVOKE_PARAMETERS
+# include <iostream>
+# define SHOW_FUNCTION_PARAMETERS_0(name) \
+	std::cout << name << "();\n";
+# define SHOW_FUNCTION_PARAMETERS_1(name, _1) \
+	std::cout << name << "( " << _1 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_2(name, _1, _2) \
+	std::cout << name << "( " << _1 << ", " << _2 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_3(name, _1, _2, _3) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_4(name, _1, _2, _3, _4) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_5(name, _1, _2, _3, _4, _5) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_6(name, _1, _2, _3, _4, _5, _6) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_7(name, _1, _2, _3, _4, _5, _6, _7) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_8(name, _1, _2, _3, _4, _5, _6, _7, _8) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ", " << _8 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_9(name, _1, _2, _3, _4, _5, _6, _7, _8, _9) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ", " << _8 << ", " << _9 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_10(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ", " << _8 << ", " << _9 << ", " << _10 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_11(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ", " << _8 << ", " << _9 << ", " << _10 << ", " << _11 << ");\n";
+# define SHOW_FUNCTION_PARAMETERS_12(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12) \
+	std::cout << name << "( " << _1 << ", " << _2 << ", " << _3 << ", " << _4 << ", " << _5 << ", " << _6 << ", " << _7 << ", " << _8 << ", " << _9 << ", " << _10 << ", " << _11 << ", " << _12 << ");\n";
+#else
+# define SHOW_FUNCTION_PARAMETERS_0(name) ;
+# define SHOW_FUNCTION_PARAMETERS_1(name, _1) ;
+# define SHOW_FUNCTION_PARAMETERS_2(name, _1, _2) ;
+# define SHOW_FUNCTION_PARAMETERS_3(name, _1, _2, _3) ;
+# define SHOW_FUNCTION_PARAMETERS_4(name, _1, _2, _3, _4) ;
+# define SHOW_FUNCTION_PARAMETERS_5(name, _1, _2, _3, _4, _5) ;
+# define SHOW_FUNCTION_PARAMETERS_6(name, _1, _2, _3, _4, _5, _6) ;
+# define SHOW_FUNCTION_PARAMETERS_7(name, _1, _2, _3, _4, _5, _6, _7) ;
+# define SHOW_FUNCTION_PARAMETERS_8(name, _1, _2, _3, _4, _5, _6, _7, _8) ;
+# define SHOW_FUNCTION_PARAMETERS_9(name, _1, _2, _3, _4, _5, _6, _7, _8, _9) ;
+# define SHOW_FUNCTION_PARAMETERS_10(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) ;
+# define SHOW_FUNCTION_PARAMETERS_11(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) ;
+# define SHOW_FUNCTION_PARAMETERS_12(name, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12) ;
+#endif
 
 
 
@@ -47,8 +91,8 @@ GL::ShaderID GL::CreateShader(ShaderType type) { return glCreateShader((unsigned
 void GL::DeleteShader(ShaderID shader) { glDeleteShader(shader); }
 void GL::CompileShader(ShaderID shader) { glCompileShader(shader); }
 void GL::ShaderSource(ShaderID shader, Size count, CString str[], int len[]) { glShaderSource(shader, count, str, len); }
-void GL::ShaderSource(ShaderID shader, Size count, CString str[]) { glShaderSource(shader, count, str, NULL); }
-void GL::ShaderSource(ShaderID shader, CString str) { glShaderSource(shader, 1, &str, NULL); }
+void GL::ShaderSource(ShaderID shader, Size count, CString str[]) { glShaderSource(shader, count, str, nullptr); }
+void GL::ShaderSource(ShaderID shader, CString str) { glShaderSource(shader, 1, &str, nullptr); }
 void GL::GetShaderInfoLog(ShaderID shader, Size maxLength, int & length, CStringBuffer infoLog)
 {
 	glGetShaderInfoLog(shader, maxLength, &length, infoLog);
@@ -145,75 +189,222 @@ void GL::GetUniformuiv(ShaderProgramID program, UniformLocation location, VUIntD
 
 
 
-bool GL::IsVertexArray(VertexArrayID array) { return glIsVertexArray(array); }
-void GL::GenVertexArrays(Size n, VertexArrayID arrays[]) { glGenVertexArrays(n, arrays); }
-void GL::DeleteVertexArrays(Size n, VertexArrayID arrays[]) { glDeleteVertexArrays(n, arrays); }
-GL::VertexArrayID GL::CreateVertexArray() { VertexArrayID array; glGenVertexArrays(1, &array); return array; }
-void GL::DeleteVertexArray(VertexArrayID array) { DeleteVertexArrays(1, &array); }
-void GL::BindVertexArray(VertexArrayID array) { glBindVertexArray(array); }
+
+
+bool GL::IsVertexArray(VertexArrayID array)
+{
+	return glIsVertexArray(array);
+}
+void GL::GenVertexArrays(Size n, VertexArrayID arrays[])
+{
+	glGenVertexArrays(n, arrays);
+}
+void GL::DeleteVertexArrays(Size n, VertexArrayID arrays[])
+{
+	glDeleteVertexArrays(n, arrays);
+}
+GL::VertexArrayID GL::CreateVertexArray()
+{
+	VertexArrayID array; glGenVertexArrays(1, &array); return array;
+}
+void GL::DeleteVertexArray(VertexArrayID array)
+{
+	DeleteVertexArrays(1, &array);
+}
+void GL::BindVertexArray(VertexArrayID array)
+{
+	glBindVertexArray(array);
+}
 
 
 
 
 
-void GL::EnableVertexAttribArray(AttributeLocation index) { glEnableVertexAttribArray(index); }
-void GL::DisableVertexAttribArray(AttributeLocation index) { glDisableVertexAttribArray(index); }
-void GL::VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data) { glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data); }
-void GL::VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data) { glVertexAttribIPointer(index, size, (unsigned int)type, stride, data); }
-void GL::VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor) { glVertexAttribDivisor(index, divisor); }
+
+
+void GL::EnableVertexAttribArray(AttributeLocation index)
+{
+	glEnableVertexAttribArray(index);
+}
+void GL::DisableVertexAttribArray(AttributeLocation index)
+{
+	glDisableVertexAttribArray(index);
+}
+void GL::VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data)
+{
+	glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data);
+}
+void GL::VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data)
+{
+	glVertexAttribIPointer(index, size, (unsigned int)type, stride, data);
+}
+void GL::VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor)
+{
+	glVertexAttribDivisor(index, divisor);
+}
 
 
 
 
 
-void GL::DrawArrays(DrawMode mode, unsigned int first, Size count) { glDrawArrays((unsigned int)mode, first, count); }
-void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount) { glDrawArraysInstanced((unsigned int)mode, first, count, instancecount); }
-void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices) { glDrawElements((unsigned int)mode, count, (unsigned int)type, indices); }
-void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount) { glDrawElementsInstanced((unsigned int)mode, count, (unsigned int)type, indices, instancecount); }
-void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type) { DrawElements(mode, count, type, NULL); }
-void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount) { DrawElementsInstanced(mode, count, type, NULL, instancecount); }
+
+
+void GL::DrawArrays(DrawMode mode, unsigned int first, Size count)
+{
+	SHOW_FUNCTION_PARAMETERS_3("DrawArrays", mode, first, count);
+	glDrawArrays((unsigned int)mode, first, count);
+}
+void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawArraysInstanced", mode, first, count, instancecount);
+	glDrawArraysInstanced((unsigned int)mode, first, count, instancecount);
+}
+void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, indices);
+	glDrawElements((unsigned int)mode, count, (unsigned int)type, indices);
+}
+void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_5("DrawElementsInstanced", mode, count, type, indices, instancecount);
+	glDrawElementsInstanced((unsigned int)mode, count, (unsigned int)type, indices, instancecount);
+}
+void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, "nullptr");
+	DrawElements(mode, count, type, nullptr);
+}
+void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElementsInstanced", mode, count, type, instancecount);
+	DrawElementsInstanced(mode, count, type, nullptr, instancecount);
+}
 
 
 
 
 
-bool GL::IsBuffer(BufferID buffer) { return glIsBuffer(buffer); }
-void GL::GenBuffers(Size n, BufferID buffers[]) { glGenBuffers(n, buffers); }
-void GL::DeleteBuffers(Size n, const BufferID buffers[]) { glDeleteBuffers(n, buffers); }
-GL::BufferID GL::CreateBuffer() { BufferID buffer; GenBuffers(1, &buffer); return buffer; }
-void GL::DeleteBuffer(BufferID buffer) { DeleteBuffers(1, &buffer); }
-void GL::BindBuffer(BufferTarget target, BufferID buffer) { glBindBuffer((unsigned int)target, buffer); }
-void GL::BufferData(BufferTarget target, Size size, VData data, BufferDataUsage usage) { glBufferData((unsigned int)target, size, data, (unsigned int)usage); }
+
+
+bool GL::IsBuffer(BufferID buffer)
+{
+	return glIsBuffer(buffer);
+}
+void GL::GenBuffers(Size n, BufferID buffers[])
+{
+	glGenBuffers(n, buffers);
+}
+void GL::DeleteBuffers(Size n, const BufferID buffers[])
+{
+	glDeleteBuffers(n, buffers);
+}
+GL::BufferID GL::CreateBuffer()
+{
+	BufferID buffer;
+	GenBuffers(1, &buffer);
+	return buffer;
+}
+void GL::DeleteBuffer(BufferID buffer)
+{
+	DeleteBuffers(1, &buffer);
+}
+void GL::BindBuffer(BufferTarget target, BufferID buffer)
+{
+	glBindBuffer((unsigned int)target, buffer);
+}
+void GL::BufferData(BufferTarget target, Size size, VData data, BufferDataUsage usage)
+{
+	glBufferData((unsigned int)target, size, data, (unsigned int)usage);
+}
 
 
 
 
 
-bool	GL::IsTexture(TextureID texture) { return glIsTexture(texture); }
-void	GL::GenTextures(Size n, TextureID textures[]) { glGenTextures(n, textures); }
-void	GL::DeleteTextures(Size n, const TextureID textures[]) { glDeleteTextures(n, textures); }
-GL::TextureID	GL::CreateTexture() { TextureID texture; GenTextures(1, &texture); return texture; }
-void		GL::DeleteTexture(TextureID texture) { DeleteTextures(1, &texture); }
-void	GL::BindTexture(TextureTarget target, TextureID texture) { glBindTexture((unsigned int)target, texture); }
-void	GL::GenerateMipmap(TextureTarget target) { glGenerateMipmap((unsigned int)target); }
+
+
+bool	GL::IsTexture(TextureID texture)
+{
+	return glIsTexture(texture);
+}
+void	GL::GenTextures(Size n, TextureID textures[])
+{
+	glGenTextures(n, textures);
+}
+void	GL::DeleteTextures(Size n, const TextureID textures[])
+{
+	glDeleteTextures(n, textures);
+}
+GL::TextureID	GL::CreateTexture()
+{
+	TextureID texture; GenTextures(1, &texture); return texture;
+}
+void		GL::DeleteTexture(TextureID texture)
+{
+	DeleteTextures(1, &texture);
+}
+void	GL::BindTexture(TextureTarget target, TextureID texture)
+{
+	glBindTexture((unsigned int)target, texture);
+}
+void	GL::GenerateMipmap(TextureTarget target)
+{
+	glGenerateMipmap((unsigned int)target);
+}
+
+
 
 void	GL::TexImage1D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, int border, TextureFormat format, TextureType type, VData data)
-{ glTexImage1D((unsigned int)target, level, (int)internalformat, width, border, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexImage1D((unsigned int)target, level, (int)internalformat, width, border, (unsigned int)format, (unsigned int)type, data);
+}
 void	GL::TexImage2D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, int border, TextureFormat format, TextureType type, VData data)
-{ glTexImage2D((unsigned int)target, level, (int)internalformat, width, height, border, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexImage2D((unsigned int)target, level, (int)internalformat, width, height, border, (unsigned int)format, (unsigned int)type, data);
+}
 void	GL::TexImage3D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, Size depth, int border, TextureFormat format, TextureType type, VData data)
-{ glTexImage3D((unsigned int)target, level, (int)internalformat, width, height, depth, border, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexImage3D((unsigned int)target, level, (int)internalformat, width, height, depth, border, (unsigned int)format, (unsigned int)type, data);
+}
+
+
 
 void	GL::TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, TextureFormat format, TextureType type, VData data)
-{ glTexSubImage1D((unsigned int)target, level, xoffset, width, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexSubImage1D((unsigned int)target, level, xoffset, width, (unsigned int)format, (unsigned int)type, data);
+}
 void	GL::TexSubImage2D(TextureTarget target, int level, int xoffset, int yoffset, Size width, Size height, TextureFormat format, TextureType type, VData data)
-{ glTexSubImage2D((unsigned int)target, level, xoffset, yoffset, width, height, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexSubImage2D((unsigned int)target, level, xoffset, yoffset, width, height, (unsigned int)format, (unsigned int)type, data);
+}
 void	GL::TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, Size width, Size height, Size depth, TextureFormat format, TextureType type, VData data)
-{ glTexSubImage3D((unsigned int)target, level, xoffset, yoffset, zoffset, width, height, depth, (unsigned int)format, (unsigned int)type, data); }
+{
+	glTexSubImage3D((unsigned int)target, level, xoffset, yoffset, zoffset, width, height, depth, (unsigned int)format, (unsigned int)type, data);
+}
 
-void	GL::TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param) { glTexParameterf((unsigned int)target, (unsigned int)pname, param); }
-void	GL::TexParameteri(TextureTarget target, TextureParameterName pname, VInt param) { glTexParameteri((unsigned int)target, (unsigned int)pname, param); }
-void	GL::TexParameterfv(TextureTarget target, TextureParameterName pname, VFloatCData params) { glTexParameterfv((unsigned int)target, (unsigned int)pname, params); }
-void	GL::TexParameteriv(TextureTarget target, TextureParameterName pname, VIntCData params) { glTexParameteriv((unsigned int)target, (unsigned int)pname, params); }
-void	GL::TexParameterIiv(TextureTarget target, TextureParameterName pname, VIntCData params) { glTexParameterIiv((unsigned int)target, (unsigned int)pname, params); }
-void	GL::TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIntCData params) { glTexParameterIuiv((unsigned int)target, (unsigned int)pname, params); }
+
+
+void	GL::TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param)
+{
+	glTexParameterf((unsigned int)target, (unsigned int)pname, param);
+}
+void	GL::TexParameteri(TextureTarget target, TextureParameterName pname, VInt param)
+{
+	glTexParameteri((unsigned int)target, (unsigned int)pname, param);
+}
+void	GL::TexParameterfv(TextureTarget target, TextureParameterName pname, VFloatCData params)
+{
+	glTexParameterfv((unsigned int)target, (unsigned int)pname, params);
+}
+void	GL::TexParameteriv(TextureTarget target, TextureParameterName pname, VIntCData params)
+{
+	glTexParameteriv((unsigned int)target, (unsigned int)pname, params);
+}
+void	GL::TexParameterIiv(TextureTarget target, TextureParameterName pname, VIntCData params)
+{
+	glTexParameterIiv((unsigned int)target, (unsigned int)pname, params);
+}
+void	GL::TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIntCData params)
+{
+	glTexParameterIuiv((unsigned int)target, (unsigned int)pname, params);
+}

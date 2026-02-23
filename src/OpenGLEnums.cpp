@@ -277,6 +277,49 @@ GL::ClearMask GL::operator|(ClearMask v0, ClearMask v1) { return (ClearMask)((un
 
 
 
+std::ostream & GL::operator<<(std::ostream & s, Comparison val)
+{
+	switch (val)
+	{
+		case Comparison::Never: s << "Never"; break;
+		case Comparison::Less: s << "Less"; break;
+		case Comparison::Equal: s << "Equal"; break;
+		case Comparison::Lequal: s << "Lequal"; break;
+		case Comparison::Greater: s << "Greater"; break;
+		case Comparison::Notequal: s << "Notequal"; break;
+		case Comparison::Gequal: s << "Gequal"; break;
+		case Comparison::Always: s << "Always"; break;
+		default: s << "Comparison: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+
+
+
+std::ostream & GL::operator<<(std::ostream & s, Side val)
+{
+	switch (val)
+	{
+		case Side::Front: s << "Front"; break;
+		case Side::Back: s << "Back"; break;
+		case Side::FrontAndBack: s << "FrontAndBack"; break;
+		default: s << "Side: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, FrontSide val)
+{
+	switch (val)
+	{
+		case FrontSide::Cw: s << "Cw"; break;
+		case FrontSide::Ccw: s << "Ccw"; break;
+		default: s << "FrontSide: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+
+
+
 std::ostream & GL::operator<<(std::ostream & s, ShaderType val)
 {
 	switch (val)
@@ -288,6 +331,47 @@ std::ostream & GL::operator<<(std::ostream & s, ShaderType val)
 		case ShaderType::GeometryShader: s << "GeometryShader"; break;
 		case ShaderType::FragmentShader: s << "FragmentShader"; break;
 		default: s << ": " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, ShaderParameterName val)
+{
+	switch (val)
+	{
+		case ShaderParameterName::ShaderType: s << "ShaderType"; break;
+		case ShaderParameterName::DeleteStatus: s << "DeleteStatus"; break;
+		case ShaderParameterName::CompileStatus: s << "CompileStatus"; break;
+		case ShaderParameterName::InfoLogLength: s << "InfoLogLength"; break;
+		case ShaderParameterName::ShaderSourceLength: s << "ShaderSourceLength"; break;
+		default: s << "ShaderParameterName: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, ShaderProgramParameterName val)
+{
+	switch (val)
+	{
+		case ShaderProgramParameterName::DeleteStatus: s << "DeleteStatus"; break;
+		case ShaderProgramParameterName::LinkStatus: s << "LinkStatus"; break;
+		case ShaderProgramParameterName::ValidateStatus: s << "ValidateStatus"; break;
+		case ShaderProgramParameterName::InfoLogLength: s << "InfoLogLength"; break;
+		case ShaderProgramParameterName::AttachedShaders: s << "AttachedShaders"; break;
+		case ShaderProgramParameterName::ActiveAtomicCounterBuffers: s << "ActiveAtomicCounterBuffers"; break;
+		case ShaderProgramParameterName::ActiveAttributes: s << "ActiveAttributes"; break;
+		case ShaderProgramParameterName::ActiveAttributeMaxLength: s << "ActiveAttributeMaxLength"; break;
+		case ShaderProgramParameterName::ActiveUniforms: s << "ActiveUniforms"; break;
+		case ShaderProgramParameterName::ActiveUniformBlocks: s << "ActiveUniformBlocks"; break;
+		case ShaderProgramParameterName::ActiveUniformBlockMaxNameLength: s << "ActiveUniformBlockMaxNameLength"; break;
+		case ShaderProgramParameterName::ActiveUniformMaxLength: s << "ActiveUniformMaxLength"; break;
+		case ShaderProgramParameterName::ComputeWorkGroupSize: s << "ComputeWorkGroupSize"; break;
+		case ShaderProgramParameterName::ProgramBinaryLength: s << "ProgramBinaryLength"; break;
+		case ShaderProgramParameterName::TransformFeedbackBufferMode: s << "TransformFeedbackBufferMode"; break;
+		case ShaderProgramParameterName::TransformFeedbackVaryings: s << "TransformFeedbackVaryings"; break;
+		case ShaderProgramParameterName::TransformFeedbackVaryingMaxLength: s << "TransformFeedbackVaryingMaxLength"; break;
+		case ShaderProgramParameterName::GeometryVerticesOut: s << "GeometryVerticesOut"; break;
+		case ShaderProgramParameterName::GeometryInputType: s << "GeometryInputType"; break;
+		case ShaderProgramParameterName::GeometryOutputType: s << "GeometryOutputType"; break;
+		default: s << "ShaderProgramParameterName: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -315,7 +399,6 @@ std::ostream & GL::operator<<(std::ostream & s, AttributeType val)
 	}
 	return s;
 }
-
 std::ostream & GL::operator<<(std::ostream & s, AttributeIntType val)
 {
 	switch (val)
@@ -350,6 +433,17 @@ std::ostream & GL::operator<<(std::ostream & s, DrawMode val)
 		case DrawMode::TrianglesAdjacency: s << "TrianglesAdjacency"; break;
 		case DrawMode::Patches: s << "Patches"; break;
 		default: s << ": " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, DrawIndexType val)
+{
+	switch (val)
+	{
+		case DrawIndexType::UnsignedByte: s << "UnsignedByte"; break;
+		case DrawIndexType::UnsignedShort: s << "UnsignedShort"; break;
+		case DrawIndexType::UnsignedInt: s << "UnsignedInt"; break;
+		default: s << "DrawIndexType: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -392,6 +486,193 @@ std::ostream & GL::operator<<(std::ostream & s, BufferDataUsage val)
 		case BufferDataUsage::DynamicRead: s << "DynamicRead"; break;
 		case BufferDataUsage::DynamicCopy: s << "DynamicCopy"; break;
 		default: s << ": " << ((unsigned int)val); break;
+	}
+	return s;
+}
+
+
+
+std::ostream & GL::operator<<(std::ostream & s, TextureTarget val)
+{
+	switch (val)
+	{
+		case TextureTarget::Texture1D: s << "Texture1D"; break;
+		case TextureTarget::Texture2D: s << "Texture2D"; break;
+		case TextureTarget::Texture3D: s << "Texture3D"; break;
+		case TextureTarget::Texture1DArray: s << "Texture1DArray"; break;
+		case TextureTarget::Texture2DArray: s << "Texture2DArray"; break;
+		case TextureTarget::TextureRectangle: s << "TextureRectangle"; break;
+		case TextureTarget::TextureCubeMap: s << "TextureCubeMap"; break;
+		case TextureTarget::TextureCubeMapArray: s << "TextureCubeMapArray"; break;
+		case TextureTarget::TextureBuffer: s << "TextureBuffer"; break;
+		case TextureTarget::Texture2DMultisample: s << "Texture2DMultisample"; break;
+		case TextureTarget::Texture2DMultisampleArray: s << "Texture2DMultisampleArray"; break;
+		default: s << "TextureTarget: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, TextureFormat val)
+{
+	switch (val)
+	{
+		case TextureFormat::Red: s << "Red"; break;
+		case TextureFormat::Rg: s << "Rg"; break;
+		case TextureFormat::Rgb: s << "Rgb"; break;
+		case TextureFormat::Bgr: s << "Bgr"; break;
+		case TextureFormat::Rgba: s << "Rgba"; break;
+		case TextureFormat::Bgra: s << "Bgra"; break;
+		case TextureFormat::RedInteger: s << "RedInteger"; break;
+		case TextureFormat::RgInteger: s << "RgInteger"; break;
+		case TextureFormat::RgbInteger: s << "RgbInteger"; break;
+		case TextureFormat::BgrInteger: s << "BgrInteger"; break;
+		case TextureFormat::RgbaInteger: s << "RgbaInteger"; break;
+		case TextureFormat::BgraInteger: s << "BgraInteger"; break;
+		case TextureFormat::StencilIndex: s << "StencilIndex"; break;
+		case TextureFormat::DepthComponent: s << "DepthComponent"; break;
+		case TextureFormat::DepthStencil: s << "DepthStencil"; break;
+		default: s << "TextureFormat: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, TextureType val)
+{
+	switch (val)
+	{
+		case TextureType::UnsignedByte: s << "UnsignedByte"; break;
+		case TextureType::Byte: s << "Byte"; break;
+		case TextureType::UnsignedShort: s << "UnsignedShort"; break;
+		case TextureType::Short: s << "Short"; break;
+		case TextureType::UnsignedInt: s << "UnsignedInt"; break;
+		case TextureType::Int: s << "Int"; break;
+		case TextureType::HalfFloat: s << "HalfFloat"; break;
+		case TextureType::Float: s << "Float"; break;
+		case TextureType::UnsignedByte332: s << "UnsignedByte332"; break;
+		case TextureType::UnsignedByte233Rev: s << "UnsignedByte233Rev"; break;
+		case TextureType::UnsignedShort565: s << "UnsignedShort565"; break;
+		case TextureType::UnsignedShort565Rev: s << "UnsignedShort565Rev"; break;
+		case TextureType::UnsignedShort4444: s << "UnsignedShort4444"; break;
+		case TextureType::UnsignedShort4444Rev: s << "UnsignedShort4444Rev"; break;
+		case TextureType::UnsignedShort5551: s << "UnsignedShort5551"; break;
+		case TextureType::UnsignedShort1555Rev: s << "UnsignedShort1555Rev"; break;
+		case TextureType::UnsignedInt8888: s << "UnsignedInt8888"; break;
+		case TextureType::UnsignedInt8888Rev: s << "UnsignedInt8888Rev"; break;
+		case TextureType::UnsignedInt1010102: s << "UnsignedInt1010102"; break;
+		case TextureType::UnsignedInt2101010Rev: s << "UnsignedInt2101010Rev"; break;
+		default: s << "TextureType: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, TextureInternalFormat val)
+{
+	switch (val)
+	{
+		case TextureInternalFormat::DepthComponent: s << "DepthComponent"; break;
+		case TextureInternalFormat::DepthStencil: s << "DepthStencil"; break;
+		case TextureInternalFormat::Red: s << "Red"; break;
+		case TextureInternalFormat::Rg: s << "Rg"; break;
+		case TextureInternalFormat::Rgb: s << "Rgb"; break;
+		case TextureInternalFormat::Rgba: s << "Rgba"; break;
+		case TextureInternalFormat::R8: s << "R8"; break;
+		case TextureInternalFormat::R8Snorm: s << "R8Snorm"; break;
+		case TextureInternalFormat::R16: s << "R16"; break;
+		case TextureInternalFormat::R16Snorm: s << "R16Snorm"; break;
+		case TextureInternalFormat::Rg8: s << "Rg8"; break;
+		case TextureInternalFormat::Rg8Snorm: s << "Rg8Snorm"; break;
+		case TextureInternalFormat::Rg16: s << "Rg16"; break;
+		case TextureInternalFormat::Rg16Snorm: s << "Rg16Snorm"; break;
+		case TextureInternalFormat::R3G3B2: s << "R3G3B2"; break;
+		case TextureInternalFormat::Rgb4: s << "Rgb4"; break;
+		case TextureInternalFormat::Rgb5: s << "Rgb5"; break;
+		case TextureInternalFormat::Rgb8: s << "Rgb8"; break;
+		case TextureInternalFormat::Rgb8Snorm: s << "Rgb8Snorm"; break;
+		case TextureInternalFormat::Rgb10: s << "Rgb10"; break;
+		case TextureInternalFormat::Rgb12: s << "Rgb12"; break;
+		case TextureInternalFormat::Rgb16Snorm: s << "Rgb16Snorm"; break;
+		case TextureInternalFormat::Rgba2: s << "Rgba2"; break;
+		case TextureInternalFormat::Rgba4: s << "Rgba4"; break;
+		case TextureInternalFormat::Rgb5A1: s << "Rgb5A1"; break;
+		case TextureInternalFormat::Rgba8: s << "Rgba8"; break;
+		case TextureInternalFormat::Rgba8Snorm: s << "Rgba8Snorm"; break;
+		case TextureInternalFormat::Rgb10A2: s << "Rgb10A2"; break;
+		case TextureInternalFormat::Rgb10A2ui: s << "Rgb10A2ui"; break;
+		case TextureInternalFormat::Rgba12: s << "Rgba12"; break;
+		case TextureInternalFormat::Rgba16: s << "Rgba16"; break;
+		case TextureInternalFormat::Srgb8: s << "Srgb8"; break;
+		case TextureInternalFormat::Srgb8Alpha8: s << "Srgb8Alpha8"; break;
+		case TextureInternalFormat::R16f: s << "R16f"; break;
+		case TextureInternalFormat::Rg16f: s << "Rg16f"; break;
+		case TextureInternalFormat::Rgb16f: s << "Rgb16f"; break;
+		case TextureInternalFormat::Rgba16f: s << "Rgba16f"; break;
+		case TextureInternalFormat::R32f: s << "R32f"; break;
+		case TextureInternalFormat::Rg32f: s << "Rg32f"; break;
+		case TextureInternalFormat::Rgb32f: s << "Rgb32f"; break;
+		case TextureInternalFormat::Rgba32f: s << "Rgba32f"; break;
+		case TextureInternalFormat::R11fG11fB10f: s << "R11fG11fB10f"; break;
+		case TextureInternalFormat::Rgb9E5: s << "Rgb9E5"; break;
+		case TextureInternalFormat::R8i: s << "R8i"; break;
+		case TextureInternalFormat::R8ui: s << "R8ui"; break;
+		case TextureInternalFormat::R16i: s << "R16i"; break;
+		case TextureInternalFormat::R16ui: s << "R16ui"; break;
+		case TextureInternalFormat::R32i: s << "R32i"; break;
+		case TextureInternalFormat::R32ui: s << "R32ui"; break;
+		case TextureInternalFormat::Rg8i: s << "Rg8i"; break;
+		case TextureInternalFormat::Rg8ui: s << "Rg8ui"; break;
+		case TextureInternalFormat::Rg16i: s << "Rg16i"; break;
+		case TextureInternalFormat::Rg16ui: s << "Rg16ui"; break;
+		case TextureInternalFormat::Rg32i: s << "Rg32i"; break;
+		case TextureInternalFormat::Rg32ui: s << "Rg32ui"; break;
+		case TextureInternalFormat::Rgb8i: s << "Rgb8i"; break;
+		case TextureInternalFormat::Rgb8ui: s << "Rgb8ui"; break;
+		case TextureInternalFormat::Rgb16i: s << "Rgb16i"; break;
+		case TextureInternalFormat::Rgb16ui: s << "Rgb16ui"; break;
+		case TextureInternalFormat::Rgb32i: s << "Rgb32i"; break;
+		case TextureInternalFormat::Rgb32ui: s << "Rgb32ui"; break;
+		case TextureInternalFormat::Rgba8i: s << "Rgba8i"; break;
+		case TextureInternalFormat::Rgba8ui: s << "Rgba8ui"; break;
+		case TextureInternalFormat::Rgba16i: s << "Rgba16i"; break;
+		case TextureInternalFormat::Rgba16ui: s << "Rgba16ui"; break;
+		case TextureInternalFormat::Rgba32i: s << "Rgba32i"; break;
+		case TextureInternalFormat::Rgba32ui: s << "Rgba32ui"; break;
+		case TextureInternalFormat::CompressedRed: s << "CompressedRed"; break;
+		case TextureInternalFormat::CompressedRg: s << "CompressedRg"; break;
+		case TextureInternalFormat::CompressedRgb: s << "CompressedRgb"; break;
+		case TextureInternalFormat::CompressedRgba: s << "CompressedRgba"; break;
+		case TextureInternalFormat::CompressedSrgb: s << "CompressedSrgb"; break;
+		case TextureInternalFormat::CompressedSrgbAlpha: s << "CompressedSrgbAlpha"; break;
+		case TextureInternalFormat::CompressedRedRgtc1: s << "CompressedRedRgtc1"; break;
+		case TextureInternalFormat::CompressedSignedRedRgtc1: s << "CompressedSignedRedRgtc1"; break;
+		case TextureInternalFormat::CompressedRgRgtc2: s << "CompressedRgRgtc2"; break;
+		case TextureInternalFormat::CompressedSignedRgRgtc2: s << "CompressedSignedRgRgtc2"; break;
+		case TextureInternalFormat::CompressedRgbaBptcUnorm: s << "CompressedRgbaBptcUnorm"; break;
+		case TextureInternalFormat::CompressedSrgbAlphaBptcUnorm: s << "CompressedSrgbAlphaBptcUnorm"; break;
+		case TextureInternalFormat::CompressedRgbBptcSignedFloat: s << "CompressedRgbBptcSignedFloat"; break;
+		case TextureInternalFormat::CompressedRgbBptcUnsignedFloat: s << "CompressedRgbBptcUnsignedFloat"; break;
+		default: s << "TextureInternalFormat: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, TextureParameterName val)
+{
+	switch (val)
+	{
+		case TextureParameterName::DepthStencilTextureMode: s << "DepthStencilTextureMode"; break;
+		case TextureParameterName::TextureBaseLevel: s << "TextureBaseLevel"; break;
+		case TextureParameterName::TextureCompareFunc: s << "TextureCompareFunc"; break;
+		case TextureParameterName::TextureCompareMode: s << "TextureCompareMode"; break;
+		case TextureParameterName::TextureLodBias: s << "TextureLodBias"; break;
+		case TextureParameterName::TextureMinFilter: s << "TextureMinFilter"; break;
+		case TextureParameterName::TextureMagFilter: s << "TextureMagFilter"; break;
+		case TextureParameterName::TextureMinLod: s << "TextureMinLod"; break;
+		case TextureParameterName::TextureMaxLod: s << "TextureMaxLod"; break;
+		case TextureParameterName::TextureMaxLevel: s << "TextureMaxLevel"; break;
+		case TextureParameterName::TextureSwizzleR: s << "TextureSwizzleR"; break;
+		case TextureParameterName::TextureSwizzleG: s << "TextureSwizzleG"; break;
+		case TextureParameterName::TextureSwizzleB: s << "TextureSwizzleB"; break;
+		case TextureParameterName::TextureSwizzleA: s << "TextureSwizzleA"; break;
+		case TextureParameterName::TextureWrapS: s << "TextureWrapS"; break;
+		case TextureParameterName::TextureWrapT: s << "TextureWrapT"; break;
+		case TextureParameterName::TextureWrapR: s << "TextureWrapR"; break;
+		default: s << "TextureParameterName: " << ((unsigned int)val); break;
 	}
 	return s;
 }
