@@ -486,42 +486,8 @@ namespace GL
 
 
 
-	//	Texture
-	enum class TextureTarget : unsigned int
-	{
-		Texture1D = GL_TEXTURE_1D,
-		Texture2D = GL_TEXTURE_2D,
-		Texture3D = GL_TEXTURE_3D,
-		Texture1DArray = GL_TEXTURE_1D_ARRAY,
-		Texture2DArray = GL_TEXTURE_2D_ARRAY,
-		TextureRectangle = GL_TEXTURE_RECTANGLE,
-		TextureCubeMap = GL_TEXTURE_CUBE_MAP,
-		TextureCubeMapArray = GL_TEXTURE_CUBE_MAP_ARRAY,
-		TextureBuffer = GL_TEXTURE_BUFFER,
-		Texture2DMultisample = GL_TEXTURE_2D_MULTISAMPLE,
-		Texture2DMultisampleArray = GL_TEXTURE_2D_MULTISAMPLE_ARRAY,
-	};
-	std::ostream & operator<<(std::ostream & s, TextureTarget val);
-	enum class TextureFormat : unsigned int
-	{
-		Red = GL_RED,
-		Rg = GL_RG,
-		Rgb = GL_RGB,
-		Bgr = GL_BGR,
-		Rgba = GL_RGBA,
-		Bgra = GL_BGRA,
-		RedInteger = GL_RED_INTEGER,
-		RgInteger = GL_RG_INTEGER,
-		RgbInteger = GL_RGB_INTEGER,
-		BgrInteger = GL_BGR_INTEGER,
-		RgbaInteger = GL_RGBA_INTEGER,
-		BgraInteger = GL_BGRA_INTEGER,
-		StencilIndex = GL_STENCIL_INDEX,
-		DepthComponent = GL_DEPTH_COMPONENT,
-		DepthStencil = GL_DEPTH_STENCIL,
-	};
-	std::ostream & operator<<(std::ostream & s, TextureFormat val);
-	enum class TextureType : unsigned int
+	//	PixelData
+	enum class PixelDataType : unsigned int
 	{
 		UnsignedByte = GL_UNSIGNED_BYTE,
 		Byte = GL_BYTE,
@@ -544,8 +510,27 @@ namespace GL
 		UnsignedInt1010102 = GL_UNSIGNED_INT_10_10_10_2,
 		UnsignedInt2101010Rev = GL_UNSIGNED_INT_2_10_10_10_REV,
 	};
-	std::ostream & operator<<(std::ostream & s, TextureType val);
-	enum class TextureInternalFormat : unsigned int
+	std::ostream & operator<<(std::ostream & s, PixelDataType val);
+	enum class PixelDataFormat : unsigned int
+	{
+		Red = GL_RED,
+		Rg = GL_RG,
+		Rgb = GL_RGB,
+		Bgr = GL_BGR,
+		Rgba = GL_RGBA,
+		Bgra = GL_BGRA,
+		RedInteger = GL_RED_INTEGER,
+		RgInteger = GL_RG_INTEGER,
+		RgbInteger = GL_RGB_INTEGER,
+		BgrInteger = GL_BGR_INTEGER,
+		RgbaInteger = GL_RGBA_INTEGER,
+		BgraInteger = GL_BGRA_INTEGER,
+		StencilIndex = GL_STENCIL_INDEX,
+		DepthComponent = GL_DEPTH_COMPONENT,
+		DepthStencil = GL_DEPTH_STENCIL,
+	};
+	std::ostream & operator<<(std::ostream & s, PixelDataFormat val);
+	enum class InternalFormat : unsigned int
 	{
 		DepthComponent = GL_DEPTH_COMPONENT,
 		DepthStencil = GL_DEPTH_STENCIL,
@@ -631,7 +616,26 @@ namespace GL
 		CompressedRgbBptcSignedFloat = GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT,
 		CompressedRgbBptcUnsignedFloat = GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT,
 	};
-	std::ostream & operator<<(std::ostream & s, TextureInternalFormat val);
+	std::ostream & operator<<(std::ostream & s, InternalFormat val);
+
+
+
+	//	Texture
+	enum class TextureTarget : unsigned int
+	{
+		Texture1D = GL_TEXTURE_1D,
+		Texture2D = GL_TEXTURE_2D,
+		Texture3D = GL_TEXTURE_3D,
+		Texture1DArray = GL_TEXTURE_1D_ARRAY,
+		Texture2DArray = GL_TEXTURE_2D_ARRAY,
+		TextureRectangle = GL_TEXTURE_RECTANGLE,
+		TextureCubeMap = GL_TEXTURE_CUBE_MAP,
+		TextureCubeMapArray = GL_TEXTURE_CUBE_MAP_ARRAY,
+		TextureBuffer = GL_TEXTURE_BUFFER,
+		Texture2DMultisample = GL_TEXTURE_2D_MULTISAMPLE,
+		Texture2DMultisampleArray = GL_TEXTURE_2D_MULTISAMPLE_ARRAY,
+	};
+	std::ostream & operator<<(std::ostream & s, TextureTarget val);
 	enum class TextureParameterName : unsigned int
 	{
 		DepthStencilTextureMode = GL_DEPTH_STENCIL_TEXTURE_MODE,
@@ -653,6 +657,17 @@ namespace GL
 		TextureWrapR = GL_TEXTURE_WRAP_R,
 	};
 	std::ostream & operator<<(std::ostream & s, TextureParameterName val);
+
+
+
+	//	FrameBuffer
+	enum class FrameBufferTarget : unsigned int
+	{
+		DrawFramebuffer = GL_DRAW_FRAMEBUFFER,
+		ReadFramebuffer = GL_READ_FRAMEBUFFER,
+		Framebuffer = GL_FRAMEBUFFER,
+	};
+	std::ostream & operator<<(std::ostream & s, FrameBufferTarget val);
 };
 
 #endif

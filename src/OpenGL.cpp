@@ -50,31 +50,31 @@
 
 GL::Error GL::GetError() { return (GL::Error)glGetError(); }
 
-//void	GL::GetBooleanv(ParameterName pname, bool & data) { glGetBooleanv((unsigned int)pname, &data); }
-void	GL::GetFloatv(ParameterName pname, float & data) { glGetFloatv((unsigned int)pname, &data); }
-void	GL::GetIntegerv(ParameterName pname, int & data) { glGetIntegerv((unsigned int)pname, &data); }
+//void GL::GetBooleanv(ParameterName pname, bool & data) { glGetBooleanv((unsigned int)pname, &data); }
+void GL::GetFloatv(ParameterName pname, float & data) { glGetFloatv((unsigned int)pname, &data); }
+void GL::GetIntegerv(ParameterName pname, int & data) { glGetIntegerv((unsigned int)pname, &data); }
 
-//bool	GL::GetBooleanv(ParameterName pname) { bool val; GetBooleanv(pname, val); return val; }
-float	GL::GetFloatv(ParameterName pname) { float val; GetFloatv(pname, val); return val; }
-int		GL::GetIntegerv(ParameterName pname) { int val; GetIntegerv(pname, val); return val; }
+//bool GL::GetBooleanv(ParameterName pname) { bool val; GetBooleanv(pname, val); return val; }
+float GL::GetFloatv(ParameterName pname) { float val; GetFloatv(pname, val); return val; }
+int GL::GetIntegerv(ParameterName pname) { int val; GetIntegerv(pname, val); return val; }
 
-void	GL::Enable(Capability cap) { glEnable((unsigned int)cap); }
-void	GL::Disable(Capability cap) { glDisable((unsigned int)cap); }
-void	GL::Enablei(Capability cap, unsigned int index) { glEnablei((unsigned int)cap, index); }
-void	GL::Disablei(Capability cap, unsigned int index) { glDisablei((unsigned int)cap, index); }
-bool	GL::IsEnabled(Capability cap) { return glIsEnabled((unsigned int)cap); }
-bool	GL::IsEnabledi(Capability cap, unsigned int index) { return glIsEnabledi((unsigned int)cap, index); }
+void GL::Enable(Capability cap) { glEnable((unsigned int)cap); }
+void GL::Disable(Capability cap) { glDisable((unsigned int)cap); }
+void GL::Enablei(Capability cap, unsigned int index) { glEnablei((unsigned int)cap, index); }
+void GL::Disablei(Capability cap, unsigned int index) { glDisablei((unsigned int)cap, index); }
+bool GL::IsEnabled(Capability cap) { return glIsEnabled((unsigned int)cap); }
+bool GL::IsEnabledi(Capability cap, unsigned int index) { return glIsEnabledi((unsigned int)cap, index); }
 
-void	GL::Clear(ClearMask mask) { glClear((unsigned int)mask); }
-void	GL::ClearColor(float red, float green, float blue, float alpha) { glClearColor(red, green, blue, alpha); }
+void GL::Clear(ClearMask mask) { glClear((unsigned int)mask); }
+void GL::ClearColor(float red, float green, float blue, float alpha) { glClearColor(red, green, blue, alpha); }
 
-void	GL::CullFace(Side mode) { glCullFace((unsigned int)mode); }
-void	GL::FrontFace(FrontSide mode) { glFrontFace((unsigned int)mode); }
+void GL::CullFace(Side mode) { glCullFace((unsigned int)mode); }
+void GL::FrontFace(FrontSide mode) { glFrontFace((unsigned int)mode); }
 
-void	GL::DepthMask(bool flag)  { glDepthMask(flag); }
-void	GL::DepthFunc(Comparison func) { glDepthFunc((unsigned int)func); }
-void	GL::DepthRange(float n, float f) { glDepthRange(n, f); }
-void	GL::ClearDepth(float depth) { glClearDepth(depth); }
+void GL::DepthMask(bool flag)  { glDepthMask(flag); }
+void GL::DepthFunc(Comparison func) { glDepthFunc((unsigned int)func); }
+void GL::DepthRange(float n, float f) { glDepthRange(n, f); }
+void GL::ClearDepth(float depth) { glClearDepth(depth); }
 
 
 
@@ -323,88 +323,131 @@ void GL::BufferData(BufferTarget target, Size size, VData data, BufferDataUsage 
 
 
 
-bool	GL::IsTexture(TextureID texture)
+bool GL::IsTexture(TextureID texture)
 {
 	return glIsTexture(texture);
 }
-void	GL::GenTextures(Size n, TextureID textures[])
+void GL::GenTextures(Size n, TextureID textures[])
 {
 	glGenTextures(n, textures);
 }
-void	GL::DeleteTextures(Size n, const TextureID textures[])
+void GL::DeleteTextures(Size n, const TextureID textures[])
 {
 	glDeleteTextures(n, textures);
 }
-GL::TextureID	GL::CreateTexture()
+GL::TextureID GL::CreateTexture()
 {
 	TextureID texture; GenTextures(1, &texture); return texture;
 }
-void		GL::DeleteTexture(TextureID texture)
+void GL::DeleteTexture(TextureID texture)
 {
 	DeleteTextures(1, &texture);
 }
-void	GL::BindTexture(TextureTarget target, TextureID texture)
+void GL::BindTexture(TextureTarget target, TextureID texture)
 {
 	glBindTexture((unsigned int)target, texture);
 }
-void	GL::GenerateMipmap(TextureTarget target)
+void GL::GenerateMipmap(TextureTarget target)
 {
 	glGenerateMipmap((unsigned int)target);
 }
 
 
 
-void	GL::TexImage1D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, int border, TextureFormat format, TextureType type, VData data)
+void GL::TexImage1D(TextureTarget target, int level, InternalFormat internalformat, Size width, int border, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexImage1D((unsigned int)target, level, (int)internalformat, width, border, (unsigned int)format, (unsigned int)type, data);
 }
-void	GL::TexImage2D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, int border, TextureFormat format, TextureType type, VData data)
+void GL::TexImage2D(TextureTarget target, int level, InternalFormat internalformat, Size width, Size height, int border, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexImage2D((unsigned int)target, level, (int)internalformat, width, height, border, (unsigned int)format, (unsigned int)type, data);
 }
-void	GL::TexImage3D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, Size depth, int border, TextureFormat format, TextureType type, VData data)
+void GL::TexImage3D(TextureTarget target, int level, InternalFormat internalformat, Size width, Size height, Size depth, int border, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexImage3D((unsigned int)target, level, (int)internalformat, width, height, depth, border, (unsigned int)format, (unsigned int)type, data);
 }
 
 
 
-void	GL::TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, TextureFormat format, TextureType type, VData data)
+void GL::TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexSubImage1D((unsigned int)target, level, xoffset, width, (unsigned int)format, (unsigned int)type, data);
 }
-void	GL::TexSubImage2D(TextureTarget target, int level, int xoffset, int yoffset, Size width, Size height, TextureFormat format, TextureType type, VData data)
+void GL::TexSubImage2D(TextureTarget target, int level, int xoffset, int yoffset, Size width, Size height, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexSubImage2D((unsigned int)target, level, xoffset, yoffset, width, height, (unsigned int)format, (unsigned int)type, data);
 }
-void	GL::TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, Size width, Size height, Size depth, TextureFormat format, TextureType type, VData data)
+void GL::TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, Size width, Size height, Size depth, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexSubImage3D((unsigned int)target, level, xoffset, yoffset, zoffset, width, height, depth, (unsigned int)format, (unsigned int)type, data);
 }
 
 
 
-void	GL::TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param)
+void GL::TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param)
 {
 	glTexParameterf((unsigned int)target, (unsigned int)pname, param);
 }
-void	GL::TexParameteri(TextureTarget target, TextureParameterName pname, VInt param)
+void GL::TexParameteri(TextureTarget target, TextureParameterName pname, VInt param)
 {
 	glTexParameteri((unsigned int)target, (unsigned int)pname, param);
 }
-void	GL::TexParameterfv(TextureTarget target, TextureParameterName pname, VFloatCData params)
+void GL::TexParameterfv(TextureTarget target, TextureParameterName pname, VFloatCData params)
 {
 	glTexParameterfv((unsigned int)target, (unsigned int)pname, params);
 }
-void	GL::TexParameteriv(TextureTarget target, TextureParameterName pname, VIntCData params)
+void GL::TexParameteriv(TextureTarget target, TextureParameterName pname, VIntCData params)
 {
 	glTexParameteriv((unsigned int)target, (unsigned int)pname, params);
 }
-void	GL::TexParameterIiv(TextureTarget target, TextureParameterName pname, VIntCData params)
+void GL::TexParameterIiv(TextureTarget target, TextureParameterName pname, VIntCData params)
 {
 	glTexParameterIiv((unsigned int)target, (unsigned int)pname, params);
 }
-void	GL::TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIntCData params)
+void GL::TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIntCData params)
 {
 	glTexParameterIuiv((unsigned int)target, (unsigned int)pname, params);
+}
+
+
+
+
+
+
+
+bool GL::IsFramebuffer(FrameBufferID frame_buffer)
+{
+	return glIsFramebuffer(frame_buffer);
+}
+void GL::GenFramebuffers(Size n, FrameBufferID frame_buffers[])
+{
+	glGenFramebuffers(n, frame_buffers);
+}
+void GL::DeleteFramebuffers(Size n, const FrameBufferID frame_buffers[])
+{
+	glDeleteFramebuffers(n, frame_buffers);
+}
+GL::FrameBufferID GL::CreateFramebuffer()
+{
+	FrameBufferID frame_buffer; GenFramebuffers(1, &frame_buffer); return frame_buffer;
+}
+void GL::DeleteFramebuffer(FrameBufferID frame_buffer)
+{
+	DeleteFramebuffers(1, &frame_buffer);
+}
+void GL::BindFramebuffer(FrameBufferTarget target, FrameBufferID frame_buffer)
+{
+	glBindFramebuffer((unsigned int)target, frame_buffer);
+}
+
+void GL::ReadPixels(VInt x, VInt y, Size width, Size height, PixelDataFormat format, PixelDataType type, void * data)
+{
+	glReadPixels(x, y, width, height, (unsigned int)format, (unsigned int)type, data);
+}
+
+
+
+void GL::ViewPort(VInt x, VInt y, Size width, Size height)
+{
+	glViewport(x, y, width, height);
 }

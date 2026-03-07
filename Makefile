@@ -58,6 +58,11 @@ test:
 	@$(MAKE) -s $(NAME)
 	@$(COMPILER_CPP) $(FLAGS) $(ARGS_INCLUDES) main.cpp -o test.exe $(LIBRARYS) $(ARGUMENTS)
 
+decap:
+	@$(COMPILER_CPP) $(FLAGS) _MacroDecapitator.cpp -o MacroDecapitator.exe
+
+.PHONY: test decap
+
 ################################################################
 
 

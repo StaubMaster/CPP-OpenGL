@@ -178,13 +178,13 @@ namespace GL
 	void	BindTexture(TextureTarget target, TextureID texture);
 	void	GenerateMipmap(TextureTarget target);
 
-	void	TexImage1D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, int border, TextureFormat format, TextureType type, VData data);
-	void	TexImage2D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, int border, TextureFormat format, TextureType type, VData data);
-	void	TexImage3D(TextureTarget target, int level, TextureInternalFormat internalformat, Size width, Size height, Size depth, int border, TextureFormat format, TextureType type, VData data);
+	void	TexImage1D(TextureTarget target, int level, InternalFormat internalformat, Size width, int border, PixelDataFormat format, PixelDataType type, VData data);
+	void	TexImage2D(TextureTarget target, int level, InternalFormat internalformat, Size width, Size height, int border, PixelDataFormat format, PixelDataType type, VData data);
+	void	TexImage3D(TextureTarget target, int level, InternalFormat internalformat, Size width, Size height, Size depth, int border, PixelDataFormat format, PixelDataType type, VData data);
 
-	void	TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, TextureFormat format, TextureType type, VData data);
-	void	TexSubImage2D(TextureTarget target, int level, int xoffset, int yoffset, Size width, Size height, TextureFormat format, TextureType type, VData data);
-	void	TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, Size width, Size height, Size depth, TextureFormat format, TextureType type, VData data);
+	void	TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, PixelDataFormat format, PixelDataType type, VData data);
+	void	TexSubImage2D(TextureTarget target, int level, int xoffset, int yoffset, Size width, Size height, PixelDataFormat format, PixelDataType type, VData data);
+	void	TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset, int zoffset, Size width, Size height, Size depth, PixelDataFormat format, PixelDataType type, VData data);
 
 	void	TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param);
 	void	TexParameteri(TextureTarget target, TextureParameterName pname, VInt param);
@@ -192,6 +192,22 @@ namespace GL
 	void	TexParameteriv(TextureTarget target, TextureParameterName pname, VIntCData params);
 	void	TexParameterIiv(TextureTarget target, TextureParameterName pname, VIntCData params);
 	void	TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIntCData params);
+
+
+
+	//	FrameBuffer
+	bool	IsFramebuffer(FrameBufferID frame_buffer);
+	void	GenFramebuffers(Size n, FrameBufferID frame_buffers[]);
+	void	DeleteFramebuffers(Size n, const FrameBufferID frame_buffers[]);
+	FrameBufferID	CreateFramebuffer();
+	void			DeleteFramebuffer(FrameBufferID frame_buffer);
+	void	BindFramebuffer(FrameBufferTarget target, FrameBufferID frame_buffer);
+
+	void	ReadPixels(VInt x, VInt y, Size width, Size height, PixelDataFormat format, PixelDataType type, void * data);
+
+
+
+	void	ViewPort(VInt x, VInt y, Size width, Size height);
 };
 
 #endif

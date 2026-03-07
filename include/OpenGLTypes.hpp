@@ -83,13 +83,29 @@ namespace GL
 
 
 
+	//	PixelData
+	enum class PixelDataType : unsigned int;
+	enum class PixelDataFormat : unsigned int;
+
+	//typedef unsigned int InternalFormat;
+	//enum class InternalFormatBase : InternalFormat;
+	//enum class InternalFormatSized : InternalFormat;
+	//enum class InternalFormatCompressed : InternalFormat;
+	// enum dosent implcitly convert to base type
+	enum class InternalFormat : unsigned int;
+
+
+
 	//	Texture
 	typedef unsigned int TextureID; // None = 0
 	enum class TextureTarget : unsigned int;
 	enum class TextureParameterName : unsigned int;
-	enum class TextureFormat : unsigned int;
-	enum class TextureType : unsigned int;
-	enum class TextureInternalFormat : unsigned int;
+
+
+
+	//	FrameBuffer
+	typedef unsigned int FrameBufferID; // None = 0
+	enum class FrameBufferTarget : unsigned int;
 };
 
 #endif
