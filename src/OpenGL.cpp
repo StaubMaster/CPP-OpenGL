@@ -316,6 +316,14 @@ void GL::BufferData(BufferTarget target, Size size, VData data, BufferDataUsage 
 {
 	glBufferData((unsigned int)target, size, data, (unsigned int)usage);
 }
+void GL::BufferSubData(BufferTarget target, Size offset, Size size, VData data)
+{
+	glBufferSubData((unsigned int)target, offset, size, data);
+}
+void * GL::MapBuffer(BufferTarget target, BufferAccess access)
+{
+	return glMapBuffer((unsigned int)target, (unsigned int)access);
+}
 
 
 

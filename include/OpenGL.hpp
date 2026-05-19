@@ -166,6 +166,8 @@ namespace GL
 	void		DeleteBuffer(BufferID buffer);
 	void	BindBuffer(BufferTarget target, BufferID buffer);
 	void	BufferData(BufferTarget target, Size size, VData data, BufferDataUsage usage);
+	void	BufferSubData(BufferTarget target, Size offset, Size size, VData data);
+	void *	MapBuffer(BufferTarget target, BufferAccess access);
 
 
 

@@ -268,7 +268,7 @@ std::ostream & GL::operator<<(std::ostream & s, ParameterName val)
 		case ParameterName::ViewportIndexProvokingVertex: s << "ViewportIndexProvokingVertex"; break;
 		case ParameterName::ViewportSubpixelBits: s << "ViewportSubpixelBits"; break;
 		case ParameterName::MaxElementIndex: s << "MaxElementIndex"; break;
-		default: s << ": " << ((unsigned int)val); break;
+		default: s << "ParameterName: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -330,7 +330,7 @@ std::ostream & GL::operator<<(std::ostream & s, ShaderType val)
 		case ShaderType::TessEvaluationShade: s << "TessEvaluationShade"; break;
 		case ShaderType::GeometryShader: s << "GeometryShader"; break;
 		case ShaderType::FragmentShader: s << "FragmentShader"; break;
-		default: s << ": " << ((unsigned int)val); break;
+		default: s << "ShaderType: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -432,7 +432,7 @@ std::ostream & GL::operator<<(std::ostream & s, DrawMode val)
 		case DrawMode::TriangleStripAdjacency: s << "TriangleStripAdjacency"; break;
 		case DrawMode::TrianglesAdjacency: s << "TrianglesAdjacency"; break;
 		case DrawMode::Patches: s << "Patches"; break;
-		default: s << ": " << ((unsigned int)val); break;
+		default: s << "DrawMode: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -468,7 +468,7 @@ std::ostream & GL::operator<<(std::ostream & s, BufferTarget val)
 		case BufferTarget::TextureBuffer: s << "TextureBuffer"; break;
 		case BufferTarget::TransformFeedbackBuffer: s << "TransformFeedbackBuffer"; break;
 		case BufferTarget::UniformBuffer: s << "UniformBuffer"; break;
-		default: s << ": " << ((unsigned int)val); break;
+		default: s << "BufferTarget: " << ((unsigned int)val); break;
 	}
 	return s;
 }
@@ -485,7 +485,18 @@ std::ostream & GL::operator<<(std::ostream & s, BufferDataUsage val)
 		case BufferDataUsage::DynamicDraw: s << "DynamicDraw"; break;
 		case BufferDataUsage::DynamicRead: s << "DynamicRead"; break;
 		case BufferDataUsage::DynamicCopy: s << "DynamicCopy"; break;
-		default: s << ": " << ((unsigned int)val); break;
+		default: s << "BufferDataUsage: " << ((unsigned int)val); break;
+	}
+	return s;
+}
+std::ostream & GL::operator<<(std::ostream & s, BufferAccess val)
+{
+	switch (val)
+	{
+		case BufferAccess::ReadOnly: s << "ReadOnly"; break;
+		case BufferAccess::WriteOnly: s << "WriteOnly"; break;
+		case BufferAccess::ReadWrite: s << "ReadWrite"; break;
+		default: s << "BufferAccess: " << ((unsigned int)val); break;
 	}
 	return s;
 }

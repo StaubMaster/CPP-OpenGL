@@ -483,6 +483,13 @@ namespace GL
 		DynamicCopy = GL_DYNAMIC_COPY,
 	};
 	std::ostream & operator<<(std::ostream & s, BufferDataUsage val);
+	enum class BufferAccess : unsigned int
+	{
+		ReadOnly = GL_READ_ONLY,
+		WriteOnly = GL_WRITE_ONLY,
+		ReadWrite = GL_READ_WRITE,
+	};
+	std::ostream & operator<<(std::ostream & s, BufferAccess val);
 
 
 
