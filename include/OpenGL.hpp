@@ -128,14 +128,16 @@ namespace GL
 //	void	GetnUniformdv(ShaderProgramID program, UniformLocation location, Size bufSize, GLdouble *params);
 
 
-
-	//	VertexArray
-	bool			IsVertexArray(VertexArrayID array);
-	void			GenVertexArrays(Size n, VertexArrayID arrays[]);
-	void			DeleteVertexArrays(Size n, VertexArrayID arrays[]);
-	VertexArrayID	CreateVertexArray();
-	void			DeleteVertexArray(VertexArrayID array);
-	void			BindVertexArray(VertexArrayID array);
+	//	Buffer
+	bool	IsBuffer(BufferID buffer);
+	void	GenBuffers(Size n, BufferID buffers[]);
+	void	DeleteBuffers(Size n, const BufferID buffers[]);
+	BufferID	CreateBuffer();
+	void		DeleteBuffer(BufferID buffer);
+	void	BindBuffer(BufferTarget target, BufferID buffer);
+	void	BufferData(BufferTarget target, Size size, VData data, BufferDataUsage usage);
+	void	BufferSubData(BufferTarget target, Size offset, Size size, VData data);
+	void *	MapBuffer(BufferTarget target, BufferAccess access);
 
 
 
@@ -148,6 +150,27 @@ namespace GL
 
 
 
+	//	Buffer Binding
+	void	BindBufferBase(BufferTarget target, BlockBinding binding, BufferID buffer);
+
+
+
+	//	Uniform Buffer
+	BlockIndex	GetUniformBlockIndex(ShaderProgramID program, CString name);
+	void		UniformBlockBinding(ShaderProgramID program, BlockIndex index, BlockBinding binding);
+
+
+
+	//	VertexArray
+	bool			IsVertexArray(VertexArrayID array);
+	void			GenVertexArrays(Size n, VertexArrayID arrays[]);
+	void			DeleteVertexArrays(Size n, VertexArrayID arrays[]);
+	VertexArrayID	CreateVertexArray();
+	void			DeleteVertexArray(VertexArrayID array);
+	void			BindVertexArray(VertexArrayID array);
+
+
+
 	//	Drawing
 	void	DrawArrays(DrawMode mode, unsigned int first, Size count);
 	void	DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount);
@@ -155,19 +178,6 @@ namespace GL
 	void	DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount);
 	void	DrawElements(DrawMode mode, Size count, DrawIndexType type);
 	void	DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount);
-
-
-
-	//	Buffer
-	bool	IsBuffer(BufferID buffer);
-	void	GenBuffers(Size n, BufferID buffers[]);
-	void	DeleteBuffers(Size n, const BufferID buffers[]);
-	BufferID	CreateBuffer();
-	void		DeleteBuffer(BufferID buffer);
-	void	BindBuffer(BufferTarget target, BufferID buffer);
-	void	BufferData(BufferTarget target, Size size, VData data, BufferDataUsage usage);
-	void	BufferSubData(BufferTarget target, Size offset, Size size, VData data);
-	void *	MapBuffer(BufferTarget target, BufferAccess access);
 
 
 

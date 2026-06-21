@@ -48,6 +48,7 @@
 
 
 
+//	General
 GL::Error GL::GetError() { return (GL::Error)glGetError(); }
 
 //void GL::GetBooleanv(ParameterName pname, bool & data) { glGetBooleanv((unsigned int)pname, &data); }
@@ -78,8 +79,7 @@ void GL::ClearDepth(float depth) { glClearDepth(depth); }
 
 
 
-
-
+//	Shader
 int GL::GetShaderiv(ShaderID shader, ShaderParameterName parameterName)
 {
 	int param;
@@ -107,8 +107,7 @@ GL::CStringBuffer GL::GetShaderInfoLog(ShaderID shader, int & length)
 
 
 
-
-
+//	Shader Program
 int GL::GetProgramiv(ShaderProgramID shader, ShaderProgramParameterName parameterName)
 {
 	int param;
@@ -137,8 +136,7 @@ GL::CStringBuffer GL::GetProgramInfoLog(ShaderProgramID program, int & length)
 
 
 
-
-
+//	Uniform
 GL::UniformLocation GL::GetUniformLocation(ShaderProgramID program, CString name) { return glGetUniformLocation(program, name); }
 
 void GL::Uniform1f(UniformLocation location, VFloat v0) { glUniform1f(location, v0); }
@@ -187,105 +185,7 @@ void GL::GetUniformuiv(ShaderProgramID program, UniformLocation location, VUIntD
 
 
 
-
-
-
-
-bool GL::IsVertexArray(VertexArrayID array)
-{
-	return glIsVertexArray(array);
-}
-void GL::GenVertexArrays(Size n, VertexArrayID arrays[])
-{
-	glGenVertexArrays(n, arrays);
-}
-void GL::DeleteVertexArrays(Size n, VertexArrayID arrays[])
-{
-	glDeleteVertexArrays(n, arrays);
-}
-GL::VertexArrayID GL::CreateVertexArray()
-{
-	VertexArrayID array; glGenVertexArrays(1, &array); return array;
-}
-void GL::DeleteVertexArray(VertexArrayID array)
-{
-	DeleteVertexArrays(1, &array);
-}
-void GL::BindVertexArray(VertexArrayID array)
-{
-	glBindVertexArray(array);
-}
-
-
-
-
-
-
-
-void GL::EnableVertexAttribArray(AttributeLocation index)
-{
-	glEnableVertexAttribArray(index);
-}
-void GL::DisableVertexAttribArray(AttributeLocation index)
-{
-	glDisableVertexAttribArray(index);
-}
-void GL::VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data)
-{
-	glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data);
-}
-void GL::VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data)
-{
-	glVertexAttribIPointer(index, size, (unsigned int)type, stride, data);
-}
-void GL::VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor)
-{
-	glVertexAttribDivisor(index, divisor);
-}
-
-
-
-
-
-
-
-void GL::DrawArrays(DrawMode mode, unsigned int first, Size count)
-{
-	SHOW_FUNCTION_PARAMETERS_3("DrawArrays", mode, first, count);
-	glDrawArrays((unsigned int)mode, first, count);
-}
-void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount)
-{
-	SHOW_FUNCTION_PARAMETERS_4("DrawArraysInstanced", mode, first, count, instancecount);
-	glDrawArraysInstanced((unsigned int)mode, first, count, instancecount);
-}
-void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices)
-{
-	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, indices);
-	glDrawElements((unsigned int)mode, count, (unsigned int)type, indices);
-}
-void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount)
-{
-	SHOW_FUNCTION_PARAMETERS_5("DrawElementsInstanced", mode, count, type, indices, instancecount);
-	glDrawElementsInstanced((unsigned int)mode, count, (unsigned int)type, indices, instancecount);
-}
-void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type)
-{
-	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, "nullptr");
-	DrawElements(mode, count, type, nullptr);
-}
-void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount)
-{
-	SHOW_FUNCTION_PARAMETERS_4("DrawElementsInstanced", mode, count, type, instancecount);
-	DrawElementsInstanced(mode, count, type, nullptr, instancecount);
-}
-
-
-
-
-
-
-
+//	Buffer
 bool GL::IsBuffer(BufferID buffer)
 {
 	return glIsBuffer(buffer);
@@ -327,10 +227,112 @@ void * GL::MapBuffer(BufferTarget target, BufferAccess access)
 
 
 
+//	Attribute
+void GL::EnableVertexAttribArray(AttributeLocation index)
+{
+	glEnableVertexAttribArray(index);
+}
+void GL::DisableVertexAttribArray(AttributeLocation index)
+{
+	glDisableVertexAttribArray(index);
+}
+void GL::VertexAttribPointer(AttributeLocation index, Size size, AttributeType type, bool normalized, Size stride, VData data)
+{
+	glVertexAttribPointer(index, size, (unsigned int)type, normalized, stride, data);
+}
+void GL::VertexAttribIPointer(AttributeLocation index, Size size, AttributeIntType type, Size stride, VData data)
+{
+	glVertexAttribIPointer(index, size, (unsigned int)type, stride, data);
+}
+void GL::VertexAttribDivisor(AttributeLocation index, AttributeDivisor divisor)
+{
+	glVertexAttribDivisor(index, divisor);
+}
+
+
+//	Buffer Binding
+void GL::BindBufferBase(BufferTarget target, BlockBinding binding, BufferID buffer)
+{
+	glBindBufferBase((unsigned int)target, binding, buffer);
+}
 
 
 
+//	Uniform Buffer
+GL::BlockIndex GL::GetUniformBlockIndex(ShaderProgramID program, CString name)
+{
+	return glGetUniformBlockIndex(program, name);
+}
+void GL::UniformBlockBinding(ShaderProgramID program, BlockIndex index, BlockBinding binding)
+{
+	glUniformBlockBinding(program, index, binding);
+}
 
+
+
+//	VertexArray
+bool GL::IsVertexArray(VertexArrayID array)
+{
+	return glIsVertexArray(array);
+}
+void GL::GenVertexArrays(Size n, VertexArrayID arrays[])
+{
+	glGenVertexArrays(n, arrays);
+}
+void GL::DeleteVertexArrays(Size n, VertexArrayID arrays[])
+{
+	glDeleteVertexArrays(n, arrays);
+}
+GL::VertexArrayID GL::CreateVertexArray()
+{
+	VertexArrayID array; glGenVertexArrays(1, &array); return array;
+}
+void GL::DeleteVertexArray(VertexArrayID array)
+{
+	DeleteVertexArrays(1, &array);
+}
+void GL::BindVertexArray(VertexArrayID array)
+{
+	glBindVertexArray(array);
+}
+
+
+
+//	Drawing
+void GL::DrawArrays(DrawMode mode, unsigned int first, Size count)
+{
+	SHOW_FUNCTION_PARAMETERS_3("DrawArrays", mode, first, count);
+	glDrawArrays((unsigned int)mode, first, count);
+}
+void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawArraysInstanced", mode, first, count, instancecount);
+	glDrawArraysInstanced((unsigned int)mode, first, count, instancecount);
+}
+void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, indices);
+	glDrawElements((unsigned int)mode, count, (unsigned int)type, indices);
+}
+void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_5("DrawElementsInstanced", mode, count, type, indices, instancecount);
+	glDrawElementsInstanced((unsigned int)mode, count, (unsigned int)type, indices, instancecount);
+}
+void GL::DrawElements(DrawMode mode, Size count, DrawIndexType type)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElements", mode, count, type, "nullptr");
+	DrawElements(mode, count, type, nullptr);
+}
+void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount)
+{
+	SHOW_FUNCTION_PARAMETERS_4("DrawElementsInstanced", mode, count, type, instancecount);
+	DrawElementsInstanced(mode, count, type, nullptr, instancecount);
+}
+
+
+
+//	Texture
 bool GL::IsTexture(TextureID texture)
 {
 	return glIsTexture(texture);
@@ -360,8 +362,6 @@ void GL::GenerateMipmap(TextureTarget target)
 	glGenerateMipmap((unsigned int)target);
 }
 
-
-
 void GL::TexImage1D(TextureTarget target, int level, InternalFormat internalformat, Size width, int border, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexImage1D((unsigned int)target, level, (int)internalformat, width, border, (unsigned int)format, (unsigned int)type, data);
@@ -375,8 +375,6 @@ void GL::TexImage3D(TextureTarget target, int level, InternalFormat internalform
 	glTexImage3D((unsigned int)target, level, (int)internalformat, width, height, depth, border, (unsigned int)format, (unsigned int)type, data);
 }
 
-
-
 void GL::TexSubImage1D(TextureTarget target, int level, int xoffset, Size width, PixelDataFormat format, PixelDataType type, VData data)
 {
 	glTexSubImage1D((unsigned int)target, level, xoffset, width, (unsigned int)format, (unsigned int)type, data);
@@ -389,8 +387,6 @@ void GL::TexSubImage3D(TextureTarget target, int level, int xoffset, int yoffset
 {
 	glTexSubImage3D((unsigned int)target, level, xoffset, yoffset, zoffset, width, height, depth, (unsigned int)format, (unsigned int)type, data);
 }
-
-
 
 void GL::TexParameterf(TextureTarget target, TextureParameterName pname, VFloat param)
 {
@@ -419,10 +415,7 @@ void GL::TexParameterIuiv(TextureTarget target, TextureParameterName pname, VUIn
 
 
 
-
-
-
-
+//	FrameBuffer
 bool GL::IsFramebuffer(FrameBufferID frame_buffer)
 {
 	return glIsFramebuffer(frame_buffer);

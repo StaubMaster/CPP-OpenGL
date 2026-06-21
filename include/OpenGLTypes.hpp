@@ -55,8 +55,10 @@ namespace GL
 
 
 
-	//	VertexArray
-	typedef unsigned int VertexArrayID; // None = 0
+	//	Buffer
+	typedef unsigned int BufferID; // None = 0
+	enum class BufferTarget : unsigned int;
+	enum class BufferDataUsage : unsigned int;
 
 
 
@@ -70,16 +72,27 @@ namespace GL
 
 
 
+	//	Block
+	typedef unsigned int BlockIndex;
+	typedef unsigned int BlockBinding;
+
+
+
+	//	VertexArray
+	typedef unsigned int VertexArrayID; // None = 0
+
+
+
 	//	Drawing
 	enum class DrawMode : unsigned int;
 	enum class DrawIndexType : unsigned int;
 
 
 
-	//	Buffer
-	typedef unsigned int BufferID; // None = 0
-	enum class BufferTarget : unsigned int;
-	enum class BufferDataUsage : unsigned int;
+	//	Texture
+	typedef unsigned int TextureID; // None = 0
+	enum class TextureTarget : unsigned int;
+	enum class TextureParameterName : unsigned int;
 
 
 
@@ -93,13 +106,6 @@ namespace GL
 	//enum class InternalFormatCompressed : InternalFormat;
 	// enum dosent implcitly convert to base type
 	enum class InternalFormat : unsigned int;
-
-
-
-	//	Texture
-	typedef unsigned int TextureID; // None = 0
-	enum class TextureTarget : unsigned int;
-	enum class TextureParameterName : unsigned int;
 
 
 
