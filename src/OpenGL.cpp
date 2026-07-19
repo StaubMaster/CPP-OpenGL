@@ -299,12 +299,12 @@ void GL::BindVertexArray(VertexArrayID array)
 
 
 //	Drawing
-void GL::DrawArrays(DrawMode mode, unsigned int first, Size count)
+void GL::DrawArrays(DrawMode mode, int first, Size count)
 {
 	SHOW_FUNCTION_PARAMETERS_3("DrawArrays", mode, first, count);
 	glDrawArrays((unsigned int)mode, first, count);
 }
-void GL::DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount)
+void GL::DrawArraysInstanced(DrawMode mode, int first, Size count, Size instancecount)
 {
 	SHOW_FUNCTION_PARAMETERS_4("DrawArraysInstanced", mode, first, count, instancecount);
 	glDrawArraysInstanced((unsigned int)mode, first, count, instancecount);
@@ -328,6 +328,12 @@ void GL::DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Si
 {
 	SHOW_FUNCTION_PARAMETERS_4("DrawElementsInstanced", mode, count, type, instancecount);
 	DrawElementsInstanced(mode, count, type, nullptr, instancecount);
+}
+
+void GL::MultiDrawArrays(DrawMode mode, const int * offsets, const int * lengths, Size count)
+{
+	SHOW_FUNCTION_PARAMETERS_4("MultiDrawArrays", mode, offsets, lengths, count);
+	glMultiDrawArrays((unsigned int)mode, offsets, lengths, count);
 }
 
 

@@ -172,12 +172,14 @@ namespace GL
 
 
 	//	Drawing
-	void	DrawArrays(DrawMode mode, unsigned int first, Size count);
-	void	DrawArraysInstanced(DrawMode mode, unsigned int first, Size count, Size instancecount);
-	void	DrawElements(DrawMode mode, Size count, DrawIndexType type, VData indices);
-	void	DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount);
-	void	DrawElements(DrawMode mode, Size count, DrawIndexType type);
-	void	DrawElementsInstanced(DrawMode mode, Size count, DrawIndexType type, Size instancecount);
+	void	DrawArrays(				DrawMode mode, int offset, Size length);
+	void	DrawArraysInstanced(	DrawMode mode, int offset, Size length, Size instancecount);
+	void	DrawElements(			DrawMode mode, Size count, DrawIndexType type, VData indices);
+	void	DrawElementsInstanced(	DrawMode mode, Size count, DrawIndexType type, VData indices, Size instancecount);
+	void	DrawElements(			DrawMode mode, Size count, DrawIndexType type);
+	void	DrawElementsInstanced(	DrawMode mode, Size count, DrawIndexType type, Size instancecount);
+
+	void	MultiDrawArrays(		DrawMode mode, const int * offsets, const int * lengths, Size count);
 
 
 
